@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Overview</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <section id="content">
+      <div class="breadcrumbs">celltool v0.1.1 &rarr; <a href="overview.html">Overview</a></div>
+
+      <h1>celltool v0.1.1</h1>
+
+      <ul class="summary_links">
+        
+          <li><a href="#modules_summary">Modules</a></li>
+        
+        
+        
+      </ul>
+
+      
+        <h2 id="modules_summary">Modules summary <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="Cmd.Denormalize.html">Cmd.Denormalize</a></td>
+  
+    <td class="summary_synopsis"><p>Denormalizes a cell to enable firmware fallback on a cell. This is
+accomplished by setting the firmware status to <code class="inline">provisional</code></p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Cmd.Discover.html">Cmd.Discover</a></td>
+  
+    <td class="summary_synopsis"><p>Discoveres cells on the local network and displays key information such as
+the last octet of their IP, serial number, device type, and firmware version</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Cmd.Help.html">Cmd.Help</a></td>
+  
+    <td class="summary_synopsis"><p>Provides help and usage of the cell tool</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Cmd.Inspect.html">Cmd.Inspect</a></td>
+  
+    <td class="summary_synopsis"><p>Inspects a portion of the Hub tree provided by the cell through its JSON/HTTP
+API. This does not provide as much detail as Hub.dump/0 in the Hub modules,
+as only “public” key/value pairs are shown</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Cmd.Ip.html">Cmd.Ip</a></td>
+  
+    <td class="summary_synopsis"><p>Not yet implemented</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Cmd.Normalize.html">Cmd.Normalize</a></td>
+  
+    <td class="summary_synopsis"><p>Normalizes the firmware on a cell by setting the firmware status to <code class="inline">normal</code>.
+This is used to “accept” firmware so that upon reboot the device will boot
+to this version of firmware rather then falling back to previous firmware
+version</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Cmd.Provision.html">Cmd.Provision</a></td>
+  
+    <td class="summary_synopsis"><p>Provisions  a  box for  use,  assuming  the  device  is running  either  generic
+firmware or firmware with an “open” update policy</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Cmd.Push.html">Cmd.Push</a></td>
+  
+    <td class="summary_synopsis"><p>Pushes the specified firmware bundle to a cell</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Cmd.Reboot.html">Cmd.Reboot</a></td>
+  
+    <td class="summary_synopsis"><p>Reboots a cell</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Cmd.Test.html">Cmd.Test</a></td>
+  
+    <td class="summary_synopsis"><p>Not yet implemented</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Cmd.Watch.html">Cmd.Watch</a></td>
+  
+    <td class="summary_synopsis"><p>Watches the Logging UDP stream of all cells or the specified cell. The output
+is prepended by the last octet of the IP address then the logging message</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Finder.html">Finder</a></td>
+  
+    <td class="summary_synopsis"><p>find cells matching cspec
+then put title with number of cells
+then run func with each cell as param</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Inet.html">Inet</a></td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Jrtp.html">Jrtp</a></td>
+  
+    <td class="summary_synopsis"><p>Simple decoder of services document provided by cell</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="Main.html">Main</a></td>
+  
+    <td class="summary_synopsis"><p>A simple command line interface for managing cells built using modules from the <a href="cellulose.io">Cellulose</a> projects</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="SsdpClient.html">SsdpClient</a></td>
+  
+    <td class="summary_synopsis"><p>Simple SSDP client used for discovery of cells</p>
+</td>
+  
+</tr>
+
+        </table>
+      
+
+      
+
+      
+    </section>
+  </body>
+</html>

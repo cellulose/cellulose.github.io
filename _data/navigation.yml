@@ -1,0 +1,19 @@
+- title: Home
+  url: "/"
+  side: right
+
+- title: Getting Started
+  url: "/getting-started/"
+  side: right
+
+- title: Projects
+  url: "/projects/"
+  side: right
+
+- title: Documentation
+  url: "/documentation/"
+  side: right
+
+- title: "Code"
+  url: "http://github.com/cellulose"
+  side: right

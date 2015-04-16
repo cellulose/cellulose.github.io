@@ -1,0 +1,35 @@
+- title: Hub
+  name: "hub"
+  description: Implements a gen_server that holds a heirarchial key-value store with publish/subscribe semanitcs at each node of the heirarchy.
+
+- title: Jrtp Bridge
+  name: "jrtp_bridge"
+  description: JSON/REST Transport Protocol - plugin for cowboy
+
+- title: Ethernet
+  name: "ethernet"
+  description: Ethernet support module for embedded systems
+
+- title: Discovery
+  name: "discovery"
+  description: Utilities for device and service discovery
+
+- title: Persistent Storage
+  name: "persistent_storage"
+  description: Perisistently store erlang terms to the filesystem
+
+- title: Resources
+  name: "resources"
+  description: A simple Elixir module to gather system resource information
+
+- title: Leds
+  name: "leds"
+  description: Elixir module to easily control LEDs on linux
+
+- title: Logger Multicast Backend
+  name: "logger_multicast_backend"
+  description: Backend for Elixir.Logger to view logs over multicast UDP
+
+- title: Cell Tool
+  name: "cell-tool"
+  description: A simple command line interface for managing cells

@@ -1,0 +1,11 @@
+- menu_name: "Links"
+
+- name: "Github Repo"
+  url: "http://github.com/cellulose/"
+  class: "network-entypo"
+  title: "Github Repo"
+
+- name: "Projects"
+  url: "/projects/"
+  class: "services-newsletter"
+  title: "Projects"

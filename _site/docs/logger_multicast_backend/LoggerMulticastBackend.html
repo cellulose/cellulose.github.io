@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LoggerMulticastBackend</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      hljs.initHighlightingOnLoad();
+      hljs.configure({languages: []}); //disable autodetect
+    </script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <section id="content">
+      <div class="breadcrumbs">logger_multicast_backend v0.2.0 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="LoggerMulticastBackend.html">LoggerMulticastBackend</a></div>
+      <h1>
+        LoggerMulticastBackend
+        
+      </h1>
+
+      <ul class="summary_links">
+        
+          <li><a href="#summary">Summary</a></li>
+        
+        
+          <li><a href="#types_details">Types</a></li>
+        
+        
+          <li><a href="#functions_details">Functions</a></li>
+        
+        
+        
+      </ul>
+
+      
+        <section id="moduledoc" class="docstring">
+          <p>A <code class="inline">Logger</code> backend that uses multicast UDP to deliver log messages. Originally
+designed for embedded applications, it allows easily watching the log of a
+headless device on the local network.</p>
+<h1>easy peazy</h1>
+<p>in your logger config, simply do something like this:</p>
+<pre><code class="elixir">config :logger,
+  backends: [ :console, LoggerMulticastBackend ]
+  level: :debug,
+  format: &quot;$time $metadata[$level] $message
+&quot;</code></pre>
+<p>or, at runtime:</p>
+<pre><code class="elixir">Logger.add_backend LoggerMulticastBackend</code></pre>
+<p>LoggerMulticastBackend is configured when specified, and suppors the following options:</p>
+<p>:target - a tuple of the target unicast or multicast address and port, like {{241,0,0,3}, 2}
+:level - the level to be logged by this backend. Note that messages are first filtered by the general :level configuration in :logger
+:format - the format message used to print logs. Defaults to: “$time $metadata[$level] $levelpad$message
+“
+:metadata - the metadata to be printed by $metadata. Defaults to an empty list (no metadata)</p>
+
+        </section>
+      
+
+      
+
+      
+        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="#handle_event/2">handle_event(arg1, state)</a></td>
+  
+    <td class="summary_synopsis"><p>Add the formatted log entry to the log output queue if it meets our logging criteria</p>
+</td>
+  
+</tr>
+<tr>
+  <td class="summary_signature"><a href="#init/1">init(args)</a></td>
+  
+    <td class="summary_synopsis"><p>initialize the state of this logger to the environment specified
+in the logger configuration for this backend</p>
+</td>
+  
+</tr>
+
+        </table>
+      
+
+      
+        <section id="types_details" class="details_list">
+          <h2>Types <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></h2>
+          <div class="type_detail">
+  <p class="typespec" id="t:level/0">
+    <a href="#t:level/0">level</a> :: <a href="http://elixir-lang.org/docs/stable/logger/Logger.html#t:level/0">Logger.level</a>
+  </p>
+  
+</div>
+<div class="type_detail">
+  <p class="typespec" id="t:format/0">
+    <a href="#t:format/0">format</a> :: <a href="http://elixir-lang.org/docs/stable/elixir/String.html#t:t/0">String.t</a>
+  </p>
+  
+</div>
+<div class="type_detail">
+  <p class="typespec" id="t:metadata/0">
+    <a href="#t:metadata/0">metadata</a> :: [atom]
+  </p>
+  
+</div>
+
+        </section>
+      
+
+      
+        <section id="functions_details" class="details_list">
+          <h2>Functions</h2>
+          <section class="detail">
+  <div class="detail_header" id="handle_event/2">
+    <span class="signature"><strong>handle_event(arg1, state)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#handle_event/2" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Add the formatted log entry to the log output queue if it meets our logging criteria</p>
+
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="init/1">
+    <span class="signature"><strong>init(args)</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#init/1" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>initialize the state of this logger to the environment specified
+in the logger configuration for this backend</p>
+
+  </section>
+  
+</section>
+
+        </section>
+      
+
+      
+
+      
+    </section>
+  </body>
+</html>
