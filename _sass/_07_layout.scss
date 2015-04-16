@@ -90,13 +90,13 @@ body.video cite { color: #fff; }
 }
 
 #masthead .title {
-  color: rgba(0,158,0,1);
+  color: $white;
   font-size: rem-calc(44);
   padding-left: 20px;
 }
 
 #masthead .tagline {
-  color: #fff;
+  color: $white;
   margin-left: 125px;
 }
 

@@ -30,7 +30,7 @@ $ci-2: #45B29D;		// turquoise
 $ci-3: #EFC94C;		// yellow
 $ci-4: #E27A3F;		// orange
 $ci-5: #DF4949;		// red
-$ci-6: rgb(0,158,0);     // green
+$ci-6: $ci-3;     // green
 $ci-7: #7E7E7E;      // light grey
 
 
@@ -45,6 +45,8 @@ $success-color: $ci-6;
 $warning-color: $ci-4;
 $info-color: $ci-1;
 $masthead-color: $ci-7;
+
+$white: #FFFFFF;
 
 
 
@@ -83,10 +85,10 @@ $topbar-link-color-active: #000;
 $topbar-link-color-active-hover: #000;
 
 $topbar-dropdown-label-color: $ci-2;
-$topbar-dropdown-link-bg-hover: $ci-6;
+$topbar-dropdown-link-bg-hover: $ci-2;
 
-$topbar-link-bg-active: $ci-6; // Active Navigation Link
-$topbar-link-bg-hover: $ci-6;
+$topbar-link-bg-active: $ci-3; // Active Navigation Link
+$topbar-link-bg-hover: $ci-2;
 $topbar-link-bg-active-hover: $ci-2;
 
 
