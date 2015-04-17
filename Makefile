@@ -12,12 +12,13 @@ upload: pull docs push
 clean:
 	rm -rf $(docs_dir)
 
+# cd into the project dirctory, pull latest changes, build docs with version number found in VERSION
 GET_VERSION = $(shell cat ../$(1)/VERSION)
-COMPILE_DOCS = exdoc "$(1)" "$(call GET_VERSION,$(2))" "../$(2)/_build/dev/lib/$(2)/ebin" -m "$(3)" -u $(project_url) -o $(docs_dir)$(2) -p $(doc_url)
+COMPILE_DOCS = cd ../$(2); git pull; cd ../cellulose.github.io; exdoc "$(1)" "$(call GET_VERSION,$(2))" "../$(2)/_build/dev/lib/$(2)/ebin" -m "$(3)" -u $(project_url) -o $(docs_dir)$(2) -p $(doc_url)
 
 docs:
 	rm -rf $(docs_dir)
-	$(call COMPILE_DOCS,Hub,hub)
+	$(call COMPILE_DOCS,Hub,hub,Hub)
 	$(call COMPILE_DOCS,JrtpBridge,jrtp_bridge,JrtpBridge)
 	$(call COMPILE_DOCS,Ethernet,ethernet,Ethernet)
 	$(call COMPILE_DOCS,Discovery,discovery,Discovery)
