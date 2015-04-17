@@ -31,5 +31,5 @@
   description: Backend for Elixir.Logger to view logs over multicast UDP
 
 - title: Cell Tool
-  name: "cell-tool"
+  name: "celltool"
   description: A simple command line interface for managing cells
