@@ -3,6 +3,20 @@ cellulose.io website
 
 This is the website found at [http://cellulose.io](http://cellulose.io)
 
+### Running site locally
+
+This site is developed using Jekyll. You can read more about how to configure and update this site [here](https://help.github.com/articles/using-jekyll-with-pages/)
+
+If you have Bundler installed you may resolve all dependencies by running:
+```bash
+$ bundle install
+```
+
+It also implements two \_config.yml files, one for productions and one for development. To serve pages locally run the following:
+```bash
+$ jekyll serve --config _config.yml,_config_dev.yml
+```
+
 ### Building documentation
 
 1. Install executable of [ExDoc](http://github.com/elixir-lang/ex_doc). This is
