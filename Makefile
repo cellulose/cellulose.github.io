@@ -25,7 +25,6 @@ docs:
 	$(call COMPILE_DOCS,Resources,resources,Resources)
 	$(call COMPILE_DOCS,Leds,leds,Leds)
 	$(call COMPILE_DOCS,LoggerMulticastBackend,logger_multicast_backend,LoggerMulticastBackend)
-	$(call COMPILE_DOCS,CellTool,celltool,Main)
 
 pull:
 	cd $(release_dir); git pull

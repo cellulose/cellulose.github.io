@@ -9,6 +9,8 @@ header:
 ---
 
 {% for link in site.data.projects %}
+{% if link.docs == true %}
 #### [{{link.title}}]({{site.url}}/docs/{{link.name}})
-  {{link.description}}
+{{link.description}}
+{% endif %}
 {% endfor %}
