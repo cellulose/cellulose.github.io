@@ -93,11 +93,13 @@ body.video cite { color: #fff; }
   color: $white;
   font-size: rem-calc(44);
   padding-left: 20px;
+  font-family: $header-font-family;
 }
 
 #masthead .tagline {
   color: $white;
   margin-left: 125px;
+  font-family: $header-font-family;
 }
 
 /* Masthead › small-only
