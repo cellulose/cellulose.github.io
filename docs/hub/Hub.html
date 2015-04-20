@@ -76,6 +76,21 @@
  to binary keys internally (all keys are stored as binaries).    They will
  be represented as binary keys when returned.  This behavior is under review
  so if you want to be sure, pass binary keys to begin with.</p>
+<p> ## Examples</p>
+<p> Basic Usage:</p>
+<pre><code class="elixir"># Start the Hub GenServer
+ iex&gt; Hub.start
+ {:ok, #PID&lt;0.127.0&gt;}
+ # Put [status: :online] at path [:some, :point]
+ iex(2)&gt; Hub.put [:some,:point], [status: :online]
+ {:changes, {&quot;05142ef7fe86a86D2471CA6869E19648&quot;, 1},
+ [some: [point: [status: :online]]]}
+ # Fetch all values at path [:some, :point]
+ Hub.fetch [:some, :point]
+ {{&quot;05142ef7fe86a86D2471CA6869E19648&quot;, 1}, [status: :online]}
+ # Get particular value :status at [:some, :point]
+ Hub.get [:some, :point], :status
+ :online</code></pre>
 
         </section>
       
@@ -97,25 +112,44 @@
 <tr>
   <td class="summary_signature"><a href="#deltas/2">deltas(seq, path \\ [])</a></td>
   
+    <td class="summary_synopsis"><p>Gets the changes from the provided sequence counter on the path to its current
+state</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#dump/1">dump(path \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Dumps the entire contents of the hub graph, including “non human” information</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#fetch/1">fetch(path \\ [])</a></td>
   
+    <td class="summary_synopsis"><p>Gets all the “human readable” key values pairs at the specified path</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#get/2">get(path, key)</a></td>
   
+    <td class="summary_synopsis"><p>Gets the value at the specified path with the specified key</p>
+</td>
+  
 </tr>
 <tr>
-  <td class="summary_signature"><a href="#manage/2">manage(path, options)</a></td>
+  <td class="summary_signature"><a href="#manage/2">manage(path, options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Similar to <a href="#master/2"><code class="inline">master/2</code></a> but does not <code class="inline">watch</code> the path</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#manager/1">manager(path)</a></td>
+  
+    <td class="summary_synopsis"><p>Retrieves the manager with options for the provided path</p>
+</td>
   
 </tr>
 <tr>
@@ -130,21 +164,41 @@ the path as the “agent path” in the process dictionary</p>
 <tr>
   <td class="summary_signature"><a href="#put/2">put(path, changes)</a></td>
   
+    <td class="summary_synopsis"><p>Same as <a href="#update/3"><code class="inline">update/3</code></a> except no context argument. See <a href="#update/3"><code class="inline">update/3</code></a> for more
+information</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#request/3">request(path, request, context \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Request a change to the path in the hub. The Manager is forwarded the request
+and is responsible for handling it. If no manager is found a timeout will
+occur</p>
+</td>
   
 </tr>
 <tr>
   <td class="summary_signature"><a href="#unwatch/1">unwatch(path)</a></td>
   
+    <td class="summary_synopsis"><p>Removes the calling process from the @wch list of process to stop getting
+notified of changes to the path specified</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#update/3">update(path, changes, context \\ [])</a></td>
   
+    <td class="summary_synopsis"><p>Updates the path with the changes provided</p>
+</td>
+  
 </tr>
 <tr>
   <td class="summary_signature"><a href="#watch/2">watch(path, options \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Adds the calling process to the @wch list of process to get notified of
+changes to the path specified</p>
+</td>
   
 </tr>
 
@@ -168,6 +222,9 @@ the path as the “agent path” in the process dictionary</p>
   
   <section class="docstring">
     <p>Returns the controlling agent for this path, or nil if none</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Hub.agent [:some, :point]
+#PID&lt;0.125.0&gt;</code></pre>
 
   </section>
   
@@ -185,7 +242,14 @@ the path as the “agent path” in the process dictionary</p>
   </div>
   
   <section class="docstring">
-    
+    <p>Gets the changes from the provided sequence counter on the path to its current
+state.</p>
+<p>The sequence counter is retured on calls to <code class="inline">get/1</code>, <a href="#put/2"><code class="inline">put/2</code></a>, <a href="#update/3"><code class="inline">update/3</code></a>,
+<a href="#dump/1"><code class="inline">dump/1</code></a>, <a href="#fetch/1"><code class="inline">fetch/1</code></a></p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Hub.deltas 2, [:some, :path]
+{{&quot;05142f977e209de63a768684291be964&quot;, 2}, [some: :new_data]}</code></pre>
+
   </section>
   
     <a href="http://github.com/cellulose" class="view_source">Source</a>
@@ -202,7 +266,12 @@ the path as the “agent path” in the process dictionary</p>
   </div>
   
   <section class="docstring">
-    
+    <p>Dumps the entire contents of the hub graph, including “non human” information.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Hub.dump
+{{&quot;05142ef7fe86a86D2471CA6869E19648&quot;, 1},
+  [some: {1, [point: {1, [mgr@: {#PID&lt;0.125.0&gt;, []}, some: {1, :data}]}]}]}</code></pre>
+
   </section>
   
     <a href="http://github.com/cellulose" class="view_source">Source</a>
@@ -219,7 +288,11 @@ the path as the “agent path” in the process dictionary</p>
   </div>
   
   <section class="docstring">
-    
+    <p>Gets all the “human readable” key values pairs at the specified path.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt;Hub.fetch [:some, :point]
+{{&quot;05142ef7fe86a86D2471CA6869E19648&quot;, 1}, [some: :data]}</code></pre>
+
   </section>
   
     <a href="http://github.com/cellulose" class="view_source">Source</a>
@@ -236,7 +309,11 @@ the path as the “agent path” in the process dictionary</p>
   </div>
   
   <section class="docstring">
-    
+    <p>Gets the value at the specified path with the specified key.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Hub.get [:some, :point], :status
+:online</code></pre>
+
   </section>
   
     <a href="http://github.com/cellulose" class="view_source">Source</a>
@@ -244,7 +321,7 @@ the path as the “agent path” in the process dictionary</p>
 </section>
 <section class="detail">
   <div class="detail_header" id="manage/2">
-    <span class="signature"><strong>manage(path, options)</strong></span>
+    <span class="signature"><strong>manage(path, options \\ [])</strong></span>
     <div class="detail_header_links">
       <span class="detail_type">(function)</span>
       <a href="#manage/2" class="detail_link" title="Link to this function">#</a>
@@ -253,7 +330,11 @@ the path as the “agent path” in the process dictionary</p>
   </div>
   
   <section class="docstring">
-    
+    <p>Similar to <a href="#master/2"><code class="inline">master/2</code></a> but does not <code class="inline">watch</code> the path.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Hub.manage [:some, :point], []
+:ok</code></pre>
+
   </section>
   
     <a href="http://github.com/cellulose" class="view_source">Source</a>
@@ -270,7 +351,11 @@ the path as the “agent path” in the process dictionary</p>
   </div>
   
   <section class="docstring">
-    
+    <p>Retrieves the manager with options for the provided path.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Hub.manager [:some, :point]
+{:ok, {#PID&lt;0.125.0&gt;, []}}</code></pre>
+
   </section>
   
     <a href="http://github.com/cellulose" class="view_source">Source</a>
@@ -289,7 +374,12 @@ the path as the “agent path” in the process dictionary</p>
   <section class="docstring">
     <p>Associate the currrent process as the primary agent for the given
 path.  This binds/configures this process to the hub, and also sets
-the path as the “agent path” in the process dictionary</p>
+the path as the “agent path” in the process dictionary.</p>
+<p><em>Note:</em> The path provided must exist and have values stored before trying
+to master it.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Hub.master [:some, :point]
+:ok</code></pre>
 
   </section>
   
@@ -307,7 +397,9 @@ the path as the “agent path” in the process dictionary</p>
   </div>
   
   <section class="docstring">
-    
+    <p>Same as <a href="#update/3"><code class="inline">update/3</code></a> except no context argument. See <a href="#update/3"><code class="inline">update/3</code></a> for more
+information</p>
+
   </section>
   
     <a href="http://github.com/cellulose" class="view_source">Source</a>
@@ -324,7 +416,14 @@ the path as the “agent path” in the process dictionary</p>
   </div>
   
   <section class="docstring">
-    
+    <p>Request a change to the path in the hub. The Manager is forwarded the request
+and is responsible for handling it. If no manager is found a timeout will
+occur.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Hub.request [:some, :point], [useful: :info]
+{:changes, {&quot;0513b7725c5436E67975FB3A13EB3BAA&quot;, 2},
+ [some: [point: [useful: :info]]]}</code></pre>
+
   </section>
   
     <a href="http://github.com/cellulose" class="view_source">Source</a>
@@ -341,7 +440,12 @@ the path as the “agent path” in the process dictionary</p>
   </div>
   
   <section class="docstring">
-    
+    <p>Removes the calling process from the @wch list of process to stop getting
+notified of changes to the path specified.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Hub.unwatch [:some, :point]
+:ok</code></pre>
+
   </section>
   
     <a href="http://github.com/cellulose" class="view_source">Source</a>
@@ -358,7 +462,12 @@ the path as the “agent path” in the process dictionary</p>
   </div>
   
   <section class="docstring">
-    
+    <p>Updates the path with the changes provided.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Hub.update [:some, :point], [some: :data]
+{:changes, {&quot;05142ef7fe86a86D2471CA6869E19648&quot;, 1},
+ [some: [point: [some: :data]]]}</code></pre>
+
   </section>
   
     <a href="http://github.com/cellulose" class="view_source">Source</a>
@@ -375,7 +484,12 @@ the path as the “agent path” in the process dictionary</p>
   </div>
   
   <section class="docstring">
-    
+    <p>Adds the calling process to the @wch list of process to get notified of
+changes to the path specified.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Hub.watch [:some, :point]
+:ok</code></pre>
+
   </section>
   
     <a href="http://github.com/cellulose" class="view_source">Source</a>
