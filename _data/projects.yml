@@ -3,6 +3,11 @@
   description: Implements a gen_server that holds a heirarchial key-value store with publish/subscribe semanitcs at each node of the heirarchy.
   docs: true
 
+- title: HubStorage
+  name: hub_storage
+  description: "HubStorage adds a key/value storage mechenism to Hub with persistence using PersistentStorage."
+  docs: true
+
 - title: Jrtp Bridge
   name: "jrtp_bridge"
   description: JSON/REST Transport Protocol - plugin for cowboy
