@@ -26,6 +26,7 @@ docs:
 	$(call COMPILE_DOCS,Resources,resources,Resources)
 	$(call COMPILE_DOCS,Leds,leds,Leds)
 	$(call COMPILE_DOCS,LoggerMulticastBackend,logger_multicast_backend,LoggerMulticastBackend)
+	$(call COMPILE_DOCS,HubStorage,hub_storage,HubStorage)
 
 pull:
 	cd $(release_dir); git pull
