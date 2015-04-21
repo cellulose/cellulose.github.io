@@ -13,7 +13,7 @@ Coming Soon....
 
 ## Examples
 {% for link in site.data.examples %}
-### [{{link.title}}]({{site.improve_content}}/{{link.name}})
+### [{{link.title}}]({{site.improve_content}}/{{link.path}})
   {{link.description}}
 {% endfor %}
 ## Documentation
