@@ -1,8 +1,8 @@
 ---
 layout: page-fullwidth
 show_meta: false
-title: "Cellulose - Projects"
-subheadline: "Designed to make embedded development easier"
+title: "Projects"
+subheadline: ""
 header:
    image_fullwidth: ""
 permalink: "/projects/"

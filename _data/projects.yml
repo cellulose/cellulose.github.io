@@ -1,6 +1,6 @@
 - title: Hub
   name: "hub"
-  description: Implements a gen_server that holds a heirarchial key-value store with publish/subscribe semanitcs at each node of the heirarchy.
+  description: Implements a GenServer that holds a heirarchial key-value store with publish/subscribe semanitcs at each node of the heirarchy.
   docs: true
 
 - title: HubStorage
@@ -44,5 +44,5 @@
   docs: true
 
 - title: Cell Tool
-  name: "celltool"
+  name: "cell-tool"
   description: A simple command line interface for managing cells
