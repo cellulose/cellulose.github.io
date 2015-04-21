@@ -33,11 +33,7 @@
 
       <ul class="summary_links">
         
-          <li><a href="#summary">Summary</a></li>
         
-        
-        
-          <li><a href="#functions_details">Functions</a></li>
         
         
         
@@ -50,6 +46,50 @@
 the notation of the state.</p>
 <p>GET /a/point       Maps to Hub.deltas
 PUT /a/point       Maps to Hub.update</p>
+<h2>Callbacks</h2>
+<p>When a request is handles by JrtpBridge the <code class="inline">:on_wait_start</code> is called if
+provided. This is helpful when trying to light up an LED based on traffic, or
+possibly other features.</p>
+<p>When the request timeout occurs (default 30 seconds) to <code class="inline">:on_wait_end</code>
+callback is run if provided. This can be used to turn of the LED lit up in
+the <code class="inline">:on_wait_start</code> function, or other possible actions.</p>
+<p>On each JSON request the <code class="inline">:json_provider_hook</code> is called. This allows the
+developer to hook into each request.</p>
+<h2>Configuration</h2>
+<p>The <code class="inline">:website_title</code> option is used to specify the webpage title presented
+when viewing through web browser. Default: nil</p>
+<p>The <code class="inline">:on_wait_start</code> option is used to pass the <code class="inline">:on_wait_start</code> callback.</p>
+<p>The <code class="inline">:on_wait_end</code> option is used to pass the <code class="inline">:on_wait_end</code> callback.</p>
+<p>The <code class="inline">:json_provider_hook</code> option is used to pass the <code class="inline">:json_provider_hook</code> callback.</p>
+<h2>Examples</h2>
+<p>To enable JrtpBridge using cowboy. The module and options are passed as part
+of the :cowboy_router.compile/1 function call.</p>
+<pre><code class="elixir">dispatch = :cowboy_router.compile [ {:_, [
+    {&quot;/jrtp/[...]&quot;, JrtpBridge, %{
+      on_wait_start: (fn -&gt; spawn(&amp;JrtpCallbacks.connect_pinger/0) end),
+      on_wait_end:   &amp;(:erlang.exit(&amp;1, :disconnected)),
+      json_provider_hook: &amp;(JrtpBridgeCallbacks.json_provider_hook_test_fn/1),
+      webpage_title: &quot;Jrtp Device&quot;
+    }} ]} ]
+
+# The following Functions are here for completeness of above example. Not
+something you would actually want to implement
+
+defmodule JrtpCallbacks do
+
+  def connect_pinger do
+    :timer.sleep 1000
+    connect_pinger
+  end
+
+  # a funcntion to test response hooks
+  def json_provider_hook_test_fn(req) do
+    case CowboyReq.header(&quot;x-resp-hook-input&quot;, req) do
+      {:undefined, r} -&gt; r
+      {t, r} -&gt; CowboyReq.set_resp_header &quot;x-resp-hook-result&quot;, t, r
+    end
+  end
+end</code></pre>
 
         </section>
       
@@ -57,38 +97,9 @@ PUT /a/point       Maps to Hub.update</p>
       
 
       
-        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
-        <table class="summary">
-          <tr>
-  <td class="summary_signature"><a href="#rfc7386_acceptor/2">rfc7386_acceptor(req, state)</a></td>
-  
-</tr>
-
-        </table>
-      
 
       
 
-      
-        <section id="functions_details" class="details_list">
-          <h2>Functions</h2>
-          <section class="detail">
-  <div class="detail_header" id="rfc7386_acceptor/2">
-    <span class="signature"><strong>rfc7386_acceptor(req, state)</strong></span>
-    <div class="detail_header_links">
-      <span class="detail_type">(function)</span>
-      <a href="#rfc7386_acceptor/2" class="detail_link" title="Link to this function">#</a>
-      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
-    </div>
-  </div>
-  
-  <section class="docstring">
-    
-  </section>
-  
-</section>
-
-        </section>
       
 
       
