@@ -46,22 +46,60 @@
       
         <section id="moduledoc" class="docstring">
           <p>Ethernet is an Actor that manages the configuration of an ethernet port.</p>
-<p>By default, Hardware.Ethernet attempts to configure an ethernet port by using
-DHCP, reverting to static configuration if that fails.  It can also
-be used to statically configure a port upon request.</p>
+<p>By default, Ethernet attempts to configure an ethernet port by using
+DHCP, reverting to AIPA / ipv4ll addressing configuration if that fails.
+It can also be used to statically configure a port upon request.</p>
 <p>Ethernet is implemented as a GenServer.</p>
 <h1>Support for AIPA / ipv4ll addressing</h1>
-<p>If an IP cannot be obtained, Ethernet automatically configures an address
+<p>If a DHCP IP cannot be obtained, Ethernet automatically configures an address
 on the 169.254.0.0/16 network.  Microsoft calls this AIPA, and the IETF
 calls it ipv4ll (ipv4 link local) addressing.</p>
 <p>Once a node has an ipv4ll address, it broadcasts a DHCP DISCOVER packet on a
 regular basis to see if a DHCP server re-appears.  The time of this
 rebroadcast is progressive (see ip4ll_dhcp_retry_time).   It also retries if
 it gets an SSDP notification from a client on another network.</p>
-<h1>Configuration parameters (sent as Elixir map)</h1>
-<p>interface    - The ethernet interface (defaults to “eth0”)
-hostname  - hostname to pass during a DHCP request (defaults to “cell”)</p>
-<p>ip, subnet, mask, router, dns - for static configuration</p>
+<h2>Configuration</h2>
+<p>Configuration options may be specified in the application config file using
+the <code class="inline">:ethernet</code> key.</p>
+<h3>Basic</h3>
+<p>The <code class="inline">:interface</code> option specifies the interface name as specified by linux.
+<em>note:</em> This option may also be provided as an option to <a href="#start/1"><code class="inline">start/1</code></a> or <a href="#start_link/1"><code class="inline">start_link/1</code></a>
+as a Map</p>
+<p>The <code class="inline">:hostname</code> option may be used to specify the hostname to pass during
+a DHCP request. Default: “cell”
+<em>note:</em> This option may also be provided as an option to <a href="#start/1"><code class="inline">start/1</code></a> or <a href="#start_link/1"><code class="inline">start_link/1</code></a>
+as a Map</p>
+<h3>Static config at compile time</h3>
+<p>The <code class="inline">:ip</code> option may be used to specify a static ip address.</p>
+<p>The <code class="inline">:subnet</code> option is used to specify the subnet for the interface.
+Example: “255.255.0.0”</p>
+<p>The <code class="inline">:mask</code> option is used to specify the subnet mask. Example: 16</p>
+<p>The <code class="inline">:router</code> option used to specify the ip address of the router IP address.</p>
+<p>The <code class="inline">:dns</code> option is used to specify the ip address of the DNS server.
+Example: ["8.8.8.8", "4.4.4.4"]</p>
+<h3>Persistence of static configuration</h3>
+<p>Ethernet defines a Behaviour which allows the implementer the option to
+provide a mechenism to store the static configurations provided at runtime. An
+example using PersistentStorage can be found in <code class="inline">/examples</code>.</p>
+<p>To implement your own mechanism you must follow the defined behaviour and
+specify the module in the applications config file using the <code class="inline">:ethernet</code> key.</p>
+<h2>Examples</h2>
+<h3>Configuration</h3>
+<pre><code class="elixir"># Just specify the adapter and hostname so DHCP will be used on start
+config :ethernet, interface: &quot;eth0&quot;, hostname: &quot;radio&quot;
+
+# Additionally, add options to configure static ip address on start
+config :ethernet, ip: &quot;192.168.1.10&quot;, subnet: &quot;255.255.0.0&quot;, mask: 16,
+                  router: &quot;192.168.1.1&quot;
+
+# Specify a storage module
+config :ethernet, storage: EthernetPersistentStorage</code></pre>
+<h3>Usage</h3>
+<pre><code class="elixir"># Using defaults
+Ethernet.start
+
+# Providing some config options
+Ethernet.start interface: eth2</code></pre>
 
         </section>
       
