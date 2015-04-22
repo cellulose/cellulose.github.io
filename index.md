@@ -26,24 +26,10 @@ widget-3:
     image: github-303x182.jpg
 ---
 
-Cellulose is an [Elixir](http://elixir-lang.org) based framework and designed to create systems (such as an embedded device) called ___cells___. This is accomplished through the [Cellulose projects](/projects) and the [Nerves project](http://nerves-project.org).
+__Cellulose__ is an [Elixir](http://elixir-lang.org) based framework designed to create small (usually embedded) computing systems called __Cells__.
 
-A Cellulose __system__ is composed of one or more ___cells___ (such as an embedded device, or possibly PC, server, or virtual instance).   Each ___cell___ is comprised of a ___Hub___ whose purpose is to maintain a __state cache__, and coordinate multiple [___actors___](http://en.wikipedia.org/wiki/Actor_model) that interact with the __system's__ state in order to provide ___services___ for that cell.
+A __Cell__ provides networking, a built-in REST/JSON HTTP server, soft-real-time state replication, device discovery, remote updatability, programmable control, firmware versioning, and remote network configurability. 
 
-A ___cell___ is often connected via a network port (Ethernet or Wifi) to one or more ___clients___ that interact with the cell, in a client/server relationship.  A client might be a web browser, or a custom piece of software that speaks one of the __Cellulose transport protocols__.
+A __Cell__ might be used part of a distributed control system, a component in home automation,  to build a network camera, aquarium monitor, or whatever else you can dream up.
 
-Through the [Cellulose projects](/projects) a ___cell___ can employ:
 
-* Ethernet networking
-* Remote network configurability
-* Device discovery
-* Firmware management
-  * Remote updatability
-  * Fallback recovery
-  * Standardized versioning
-* JSON based ___services___ format
-* Status reporting
-* System wide state repository
-* REST-based server that allows REST/JSON communication
-
-Because Cellulose's approach to building systems is unconventional, some of the terminology and concepts can be confusing. In the interest of clarity, we reuse existing technology as appropriate, often from the networking world, but choose some new terms where existing terms might be ambiguous.
