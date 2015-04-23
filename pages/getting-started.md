@@ -9,13 +9,6 @@ header:
 permalink: "/getting-started/"
 ---
 
-Coming Soon....
-
 ## Examples
-{% for link in site.data.examples %}
-### [{{link.title}}]({{site.improve_content}}/{{link.path}})
-  {{link.description}}
-{% endfor %}
-## Documentation
 
-<a class="radius button small" href="{{ site.url }}/documentation/">Check out the documentation for all the tricks ›</a>
+<a class="radius button small" href="http://github.com/cellulose/examples">Check out the <b>examples</b> project on github</a>
