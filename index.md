@@ -32,7 +32,6 @@ A __Cell__ provides networking, a built-in REST/JSON HTTP server, soft-real-time
 
 A __Cell__ might be used part of a distributed control system, a component in home automation,  to build a network camera, aquarium monitor, or whatever else you can dream up.
 
+#### WARNING: UNDER HEAVY DEVELOPMENT
 
-## UNDER DEVELOPMENT ##
-
-This project is new as of April, 2015, and is in heavy development with frequent breaking changes.  [Contact us](http://github.com/cellulose) for more information.
+This project is new as of late April, 2015, and is in flux with frequent breaking changes.  [Contact us](http://github.com/cellulose) for more information.
