@@ -26,7 +26,7 @@ widget-3:
     image: github-303x182.jpg
 ---
 
-__Cellulose__ is an [Elixir](http://elixir-lang.org) based framework designed to create small (usually embedded) computing systems called __Cells__.
+__Cellulose__ is an framework, written in [Elixir](http://elixir-lang.org) and based on [Nerves](http://nerves-project.org), to create small (usually embedded) computing systems called __Cells__.   
 
 A __Cell__ provides networking, a built-in REST/JSON HTTP server, soft-real-time state replication, device discovery, remote updatability, programmable control, firmware versioning, and remote network configurability. 
 
