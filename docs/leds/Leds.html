@@ -25,7 +25,7 @@
     </script>
 
     <section id="content">
-      <div class="breadcrumbs">leds v0.2.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Leds.html">Leds</a></div>
+      <div class="breadcrumbs">leds v0.3.0 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Leds.html">Leds</a></div>
       <h1>
         Leds
         
@@ -69,6 +69,13 @@ easy-to use interface to setting LEDs defined in /sys/class/leds:</p>
   
 </tr>
 <tr>
+  <td class="summary_signature"><a href="#list/0">list()</a></td>
+  
+    <td class="summary_synopsis"><p>List the available leds using the LED subsystem</p>
+</td>
+  
+</tr>
+<tr>
   <td class="summary_signature"><a href="#set/1">set(settings)</a></td>
   
     <td class="summary_synopsis"><p>Set led status.  Settings is an enumerable k/v.
@@ -102,7 +109,7 @@ and they will overlap - i.e. each call resets the timer to another time
 period.  If the specified timeout is different, the last timout called
 is the timeout that is used.   When the timeout expires (with no other
 alive call for that led) the led is extinguished.</p>
-<p>The following example shows turning on an led labelled :activity.  The 
+<p>The following example shows turning on an led labelled :activity.  The
 call must be executed every 2 seconds or more to keep the activity led
 lit:</p>
 <pre><code class="elixir">Leds.alive :activity, 2000</code></pre>
@@ -125,6 +132,25 @@ lit:</p>
   
   <section class="docstring">
     
+  </section>
+  
+</section>
+<section class="detail">
+  <div class="detail_header" id="list/0">
+    <span class="signature"><strong>list()</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(function)</span>
+      <a href="#list/0" class="detail_link" title="Link to this function">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>List the available leds using the LED subsystem.</p>
+<h2>Examples</h2>
+<pre><code class="iex elixir">iex&gt; Leds.list
+{:ok, [:led0, :led1]}</code></pre>
+
   </section>
   
 </section>
