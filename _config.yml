@@ -19,11 +19,13 @@ slogan: "A framework to build small reliable systems"
 description: "»Cellulose« - Elixir based framework for creating <i>cells</i>"
 
 
-# This URL is the main adresse. Don't include a slash at the end.
+# This URL is the main addresse. Don't include a slash at the end.
 #
-url: "http://cellulose.io"
-baseurl: ""
-
+# url: "http://cellulose.io"
+# baseurl: ""
+# url: ""
+# baseurl: ""
+#
 # This is for the editing function in _/includes/improve_content.html
 # Leave it empty if your site is not on GitHub/GitHub Pages
 improve_content: https://github.com/cellulose
@@ -34,7 +36,8 @@ improve_content: https://github.com/cellulose
 # Example: <img src="{{ site.urlimg }}/{{ post.image.title }}">
 # Markdown-Example for posts ![Image Text]({{ site.urlimg }}/image.jpg)
 #
-urlimg: "http://cellulose.io/images/"
+# urlimg: "http://cellulose.io/images/"
+urlimg: " /images/"
 
 
 # Logo size is 600x80 pixels
