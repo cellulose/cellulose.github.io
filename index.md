@@ -10,7 +10,7 @@ subheadline: "Now, part of Nerves"
 
 ---
 
-<center><h1>Cellulose is now part of [Nerves](http://nerves-project.org)!</h1></center>
+Cellulose is now part of [Nerves](http://nerves-project.org)!
 
 The embedded application framework formerly known as <u>cellulose</u> is now part of the [Nerves](http://nerves-project.org) project, to which it was already tightly coupled.  
 
